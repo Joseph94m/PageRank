@@ -16,8 +16,8 @@ b)Reducer of PageRank: Searches for the article_name with the highest revision_ 
   
 3)PageRankComputer: Reads the output of PageRank (for the first iteration). Each record is now one line and contains the article name, the score (initially set to 1 from PageRank) and the outlinks.  
 a) Mapper for PageRankComputer: Emits two kinds of <key,value> pairs:  
-				i) For each outlink, emit <outlink name, score of (mother) article (1 if first read) +" "+ number of outlinks of (mother) article>  
-				ii) Emit < (mother) article_name,list of outlinks>  
+  - i) For each outlink, emit <outlink name, score of (mother) article (1 if first read) +" "+ number of outlinks of (mother) article>  
+  - ii) Emit < (mother) article_name,list of outlinks>  
 b) Reducer for PageRankComputer:For each article name it reads input that has the following shape:  
 			        i) <article_name, score of some article that points to this article+" "+  number of outlinks for the article that points to this article>  
 			        ii) <article_name, outlinks for this article>  
