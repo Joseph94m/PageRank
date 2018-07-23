@@ -18,9 +18,10 @@ b)Reducer of PageRank: Searches for the article_name with the highest revision_ 
 a) Mapper for PageRankComputer: Emits two kinds of <key,value> pairs:  
   - i) For each outlink, emit <outlink name, score of (mother) article (1 if first read) +" "+ number of outlinks of (mother) article>  
   - ii) Emit < (mother) article_name,list of outlinks>  
+  
 b) Reducer for PageRankComputer:For each article name it reads input that has the following shape:  
-			        i) <article_name, score of some article that points to this article+" "+  number of outlinks for the article that points to this article>  
-			        ii) <article_name, outlinks for this article>  
+  - i) <article_name, score of some article that points to this article+" "+  number of outlinks for the article that points to this article>  
+  - ii) <article_name, outlinks for this article>  
 The reducer then computes the PageRank using the function: P(article)= 0.15+ 0.85*sum(P(an article that points toward this article)/number of outlinks for the article that points to this article)  
 The reducer finally emits an output similar to that the PageRankComputer mapper received, so: <article_name, score+" "+ outlinks>. Note that  for the last iteration only <article_name, score> is written. This is done by creating a boolean and passing it to the configuration job2.getConfiguration().setBoolean("is.last.job", false); and setting it to true on the last run.  
 
