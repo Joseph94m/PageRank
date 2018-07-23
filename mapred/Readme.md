@@ -1,6 +1,6 @@
-Joseph Moukarzel
-Constantinos Ioannidis
-
+Joseph Moukarzel  
+Constantinos Ioannidis  
+  
 This folder contains 3 classes in 1 package named mapreduce.  
 	1)MultiLineInputFormat  
 	2)PageRank  
