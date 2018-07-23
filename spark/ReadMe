@@ -11,22 +11,28 @@ where X is an integer with X >= 1 (number of iterations) and Y is an ISO8601-for
 
 
 -------------------------------The solution-------------------------------
-In this we will be computing PageRank scores at a user-defined point in time. That is, the user of the program will supply (through a command line argument) a
-date Y; the code should then compute the PageRank score only for article revisions valid at time Y. An article revision is deemed valid if and only if it is the latest revision for that article that predates Y; i.e., iff (a)
-the revision’s creation date C predates Y and (b) there is no other revision for the same article with a creation date C’ so that C<C’<Y
+In this we will be computing PageRank scores at a user-defined point in time. That is, the user of the program will supply (through a 
+command line argument) a date Y; the code should then compute the PageRank score only for article revisions valid at time Y. An article
+revision is deemed valid if and only if it is the latest revision for that article that predates Y; i.e., iff (a)the revision’s creation
+date C predates Y and (b) there is no other revision for the same article with a creation date C’ so that C<C’<Y
 
 
 
 1)Transform the input date into a DateFormat
 2)Divide the input file into slices for 14 lines using newAPIHadoopFile
 3)Computation of the links in the following form : (Article name, Target article name). The steps to do that are:
-	a)Split line by line, get the article name and the time for that revision from line 1 and get the list of outlinks from the third line. Return a tuple <article name, time ~~ list of  outlinks>.
-	b)reduceBykey on the list of outlinks for the same article name and return the one that satisfies the relation "time of revision"<"time provided" where there exists no time between those two. Returns <article name, time ~~ list of outlinks> for the articles that satisfy this condition.
+	a)Split line by line, get the article name and the time for that revision from line 1 and get the list of outlinks from the 
+	third line. Return a tuple <article name, time ~~ list of  outlinks>.
+	b)reduceBykey on the list of outlinks for the same article name and return the one that satisfies the relation "time of 
+	 revision"<"time provided" where there exists no time between those two. Returns <article name, time ~~ list of outlinks> 
+	 for the articles that satisfy this condition.
 	c)Remove the "time" value from the previously returned tuple as it is no longer needed.
 	d)iterate through the list of outlinks for each article and emit <Article name, outlink>
 	e)Remove all duplicates with groupByKey
 4)Computation of the initial score:
-	a)Compute original link weight with mapValues. Returns <Article name, 1>. However this isn't enough as it only assigns scores to Articles with outlinks. As such, we must swap the keys and the values and do a mapValues so we can get <Article name that appears only as outlink ,1>. After that we apply distinct to remove all duplicates.
+	a)Compute original link weight with mapValues. Returns <Article name, 1>. However this isn't enough as it only
+	assigns scores to Articles with outlinks. As such, we must swap the keys and the values and do a mapValues so we can
+	get <Article name that appears only as outlink ,1>. After that we apply distinct to remove all duplicates.
 5)Use the code provided in the lectures to compute the score for n iterations.
 
 -------------------------------Results-------------------------------
