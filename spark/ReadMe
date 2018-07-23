@@ -11,12 +11,9 @@ where X is an integer with X >= 1 (number of iterations) and Y is an ISO8601-for
 
 
 -------------------------------The solution-------------------------------
-In this we will be computing PageRank scores at a user-defined
-point in time. That is, the user of the program will supply (through a command line argument) a
-date Y; the code should then compute the PageRank score only for article revisions valid at time Y.
-An article revision is deemed valid if and only if it is the latest revision for that article that predates Y; i.e., iff (a)
-the revision’s creation date C predates Y and (b) there is no other revision for the same article with a
-creation date C’ so that C<C’<Y
+In this we will be computing PageRank scores at a user-defined point in time. That is, the user of the program will supply (through a command line argument) a
+date Y; the code should then compute the PageRank score only for article revisions valid at time Y. An article revision is deemed valid if and only if it is the latest revision for that article that predates Y; i.e., iff (a)
+the revision’s creation date C predates Y and (b) there is no other revision for the same article with a creation date C’ so that C<C’<Y
 
 
 
