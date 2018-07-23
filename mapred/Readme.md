@@ -8,12 +8,10 @@ This folder contains 3 classes in 1 package named mapreduce.
 	3)PageRankComputer
 
 ----------------------------------Details for each class----------------------------------
-
-	1)MultiLineInputFormat: This class extends NLineInputFormat and contains a static class that extends RecordReader. It is needed
-because each record contains 14 lines and we need to make sure that these 14 lines are sent to the same mapper in PageRank class. We adapted code that we found on https://stackoverflow.com/questions/2711118/multiple-lines-of-text-to-a-single-map 
+	1)MultiLineInputFormat: This class extends NLineInputFormat and contains a static class that extends RecordReader. It is needed because each record contains 14 lines and we need to make sure that these 14 lines are sent to the same mapper in PageRank class. We adapted code that we found on https://stackoverflow.com/questions/2711118/multiple-lines-of-text-to-a-single-map 
 
 
-	2) PageRank: Reads the input path which is divided by records of 14 line each.
+        2) PageRank: Reads the input path which is divided by records of 14 line each.
 a)Mapper of PageRank: Goes through all the lines it receives and logically splits them into records of 14 lines using MultiLineInputFormat. It emits the follow <key,value> : <article_name of each record, revision_id+ " " + the outlinks for that article for that revision)
 b)Reducer of PageRank: Searches for the article_name with the highest revision_ id and emits the following <key,value> : <article_name, "1" + the outlinks of this article for the newest revision>
 
