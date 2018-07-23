@@ -9,7 +9,8 @@ This folder contains 3 classes in 1 package named mapreduce.
 
 ----------------------------------Details for each class----------------------------------
 
-	1)MultiLineInputFormat: This class extends NLineInputFormat and contains a static class that extends RecordReader. It is needed because each record contains 14 lines and we need to make sure that these 14 lines are sent to the same mapper in PageRank class. We adapted code that we found on https://stackoverflow.com/questions/2711118/multiple-lines-of-text-to-a-single-map 
+	1)MultiLineInputFormat: This class extends NLineInputFormat and contains a static class that extends RecordReader. It is needed
+because each record contains 14 lines and we need to make sure that these 14 lines are sent to the same mapper in PageRank class. We adapted code that we found on https://stackoverflow.com/questions/2711118/multiple-lines-of-text-to-a-single-map 
 
 
 	2) PageRank: Reads the input path which is divided by records of 14 line each.
