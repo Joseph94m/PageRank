@@ -48,5 +48,7 @@ PR(u)=0.15 + 0.85 * Sum(PR(v)/L(v)), ∀v: ∃(v,u) ∈S, where L(v) is the numb
 
 ## OutputFormat
  Article_1 score1
+ 
  Article_2 score2
+ 
  Article_3 score3
