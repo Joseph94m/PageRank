@@ -1,0 +1,67 @@
+Joseph Moukarzel
+Constantinos Ioannidis
+
+-------------------------------The solution-------------------------------
+
+1)Transform the input date into a DateFormat
+2)Divide the input file into slices for 14 lines using newAPIHadoopFile
+3)Computation of the links in the following form : (Article name, Target article name). The steps to do that are:
+	a)Split line by line, get the article name and the time for that revision from line 1 and get the list of outlinks from the third line. Return a tuple <article name, time ~~ list of  outlinks>.
+	b)reduceBykey on the list of outlinks for the same article name and return the one that satisfies the relation "time of revision"<"time provided" where there exists no time between those two. Returns <article name, time ~~ list of outlinks> for the articles that satisfy this condition.
+	c)Remove the "time" value from the previously returned tuple as it is no longer needed.
+	d)iterate through the list of outlinks for each article and emit <Article name, outlink>
+	e)Remove all duplicates with groupByKey
+4)Computation of the initial score:
+	a)Compute original link weight with mapValues. Returns <Article name, 1>. However this isn't enough as it only assigns scores to Articles with outlinks. As such, we must swap the keys and the values and do a mapValues so we can get <Article name that appears only as outlink ,1>. After that we apply distinct to remove all duplicates.
+5)Use the code provided in the lectures to compute the score for n iterations.
+
+-------------------------------Results-------------------------------
+------10 iterations largersample, 2000-12-03T12:12:12Z------
+Took around 30 seconds
+Result is an empty file since the specified date precedes
+all revisions(it even precedes the date of creation of wikipedia which was in 2001)
+
+
+------10 iterations largersample, 2007-12-03T12:12:12Z------
+Took around 3 minutes.
+United_States 88.9351169928801
+United_Kingdom 44.70744933319519
+2006 43.03003787584142
+2003 31.54496248546128
+Japan 31.383837662130038
+Canada 30.910797023288417
+2001 28.111353766724164
+May_21 27.979712822121535
+2007 25.72292905207492
+2000 25.229735666084334
+1999 23.875294778492933
+2002 23.45317846843548
+2004 23.25754385962737
+English_language 23.09048576023213
+India 22.44382425381993
+Germany 21.68214493552014
+1996 20.78137392658211
+England 20.492106536648738
+World_War_II 19.365475420023543
+
+------10 iterations larger sample, 2057-12-03T12:12:12Z------
+Took around 3 minutes.
+United_States 91.53261607542957
+United_Kingdom 46.63950810708926
+2006 44.11951824929327
+Japan 32.391102274214425
+2003 32.13353020528204
+Canada 31.79168717298933
+May_21 28.501180807111297
+2007 28.28804140992546
+2001 27.989826362956286
+2000 25.379464230979874
+1999 24.11916339006964
+2002 23.864864174679845
+English_language 23.849655747791452
+2004 23.6903456011025
+India 23.124466694279644
+Germany 22.430558488767407
+1996 22.087233993455037
+England 20.988980287293476
+World_War_II 19.84432182936433
