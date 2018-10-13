@@ -4,7 +4,8 @@ This repository provides 2 PageRank implementations for the internal wikipedia g
 
 ## InputFormat
 
-REVISION: revision metadata, consisting of:
+
+• REVISION: revision metadata, consisting of:
 
 &nbsp; &nbsp; &nbsp; &nbsp; o article_id: a large integer, uniquely identifying each page.  
 
@@ -17,7 +18,7 @@ UTC 30 September 2013 becomes 2013-09-12T13:45:00Z, where T separates the date f
 
 &nbsp; &nbsp; &nbsp; &nbsp; o [ip:]username: the name of the user who performed the revision, or her DNS-resolved IP address (e.g., ip:office.dcs.gla.ac.uk) if anonymous.  
 
-&nbsp; &nbsp; &nbsp; &nbsp; o user_id: a large number uniquely identifying the user who performed the revision, or her IP address as above if anonymous.  
+&nbsp; &nbsp; &nbsp; &nbsp; o user_id: a large number uniquely identifying the user who performed the revision, or her IP address as above if anonymous.      
 
 • CATEGORY: list of categories this page is assigned to.  
 
