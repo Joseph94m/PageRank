@@ -23,7 +23,7 @@ IP address (e.g., ip:office.dcs.gla.ac.uk) if anonymous.
 o user_id: a large number uniquely identifying the user who performed the revision, or
 her IP address as above if anonymous.  
 
-• CATEGORY: list of categories this page is assigned to.  
+&nbsp; &nbsp; • CATEGORY: list of categories this page is assigned to.  
 
 • IMAGE: list of images in the page, each listed as many times as it occurs.  
 
