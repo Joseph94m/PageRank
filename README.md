@@ -6,24 +6,24 @@ This repository provides 2 PageRank implementations for the internal wikipedia g
 
 REVISION: revision metadata, consisting of:
 
-o article_id: a large integer, uniquely identifying each page.  
+&nbsp; &nbsp; &nbsp; &nbsp; o article_id: a large integer, uniquely identifying each page.  
 
-o rev_id: a large number uniquely identifying each revision.  
+&nbsp; &nbsp; &nbsp; &nbsp; o rev_id: a large number uniquely identifying each revision.  
 
-o article_title: a string denoting the page’s title (and the last part of the URL of the
+&nbsp; &nbsp; &nbsp; &nbsp; o article_title: a string denoting the page’s title (and the last part of the URL of the
 page).
 
-o timestamp: the exact date and time of the revision, in ISO 8601 format; e.g., 13:45:00
+&nbsp; &nbsp; &nbsp; &nbsp; o timestamp: the exact date and time of the revision, in ISO 8601 format; e.g., 13:45:00
 UTC 30 September 2013 becomes 2013-09-12T13:45:00Z, where T separates the
 date from the time part and Z denotes the time is in UTC.  
 
-o [ip:]username: the name of the user who performed the revision, or her DNS-resolved
+&nbsp; &nbsp; &nbsp; &nbsp; o [ip:]username: the name of the user who performed the revision, or her DNS-resolved
 IP address (e.g., ip:office.dcs.gla.ac.uk) if anonymous.  
 
-o user_id: a large number uniquely identifying the user who performed the revision, or
+&nbsp; &nbsp; &nbsp; &nbsp; o user_id: a large number uniquely identifying the user who performed the revision, or
 her IP address as above if anonymous.  
 
-&nbsp; &nbsp; • CATEGORY: list of categories this page is assigned to.  
+• CATEGORY: list of categories this page is assigned to.  
 
 • IMAGE: list of images in the page, each listed as many times as it occurs.  
 
