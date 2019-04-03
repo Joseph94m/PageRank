@@ -1,8 +1,9 @@
 # PageRank    
 
-Original writers: Joseph Moukarzel, Constantinos Ioannidis (https://github.com/constantinos07)    
 
-This repository provides 2 PageRank implementations for the internal wikipedia graph. One in Spark and one in Hadoop MapReduce
+This repository provides 2 PageRank implementations for the internal wikipedia graph. One in Spark and one in Hadoop MapReduce    
+
+### Original writers: Joseph Moukarzel, Constantinos Ioannidis (https://github.com/constantinos07)    
 
 
 ### This repository is for indicative purposes only and it allows the original creators to keep track of the code! Do not use it if you plan on cheating!
